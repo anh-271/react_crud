@@ -10,6 +10,10 @@ class Home extends React.Component {
         this.props.deleteUserRedux(user)
     }
 
+    handleAddUser = () => {
+        this.props.addUserRedux()
+    }
+
     render() {
         let lisUsers = this.props.dataRedux
         return(
@@ -20,11 +24,14 @@ class Home extends React.Component {
                     lisUsers.map((item, index) => {
                         return (
                             <div key={item.id}>
-                                {index + 1} - {item.name} <button onClick={() => this.handleDeleteUser(item)}>X</button>
+                                {index + 1} - {item.name} 
+                                <button onClick={() => this.handleDeleteUser(item)}>x</button>
                             </div>
                         )
                     })
                 }
+                <button onClick={() => this.handleAddUser()}>Create User</button>
+
             </div>
             </>
         )
@@ -37,7 +44,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        deleteUserRedux: (userDelete) =>  dispatch({type: 'DELETE_USER', payload: userDelete  })
+        deleteUserRedux: (userDelete) =>  dispatch({type: 'DELETE_USER', payload: userDelete  }),
+        addUserRedux: () => dispatch({type: 'CREATE_USER' })
     }
 }
 

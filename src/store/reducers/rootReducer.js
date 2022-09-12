@@ -17,8 +17,12 @@ const rootReducer = (state = initState, action) => {
                 return {
                     ...state, users
                 };
-        // case y:
-        //     break;
+        case "CREATE_USER":
+            let id = Math.floor(Math.random() * 1000)
+            let user = {id: id , name: `random - ${id}`}
+            return {
+                ...state, users: [...state.users, user]
+            }
         default:      
             return state;
     }
