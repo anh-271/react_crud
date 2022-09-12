@@ -29,7 +29,7 @@ class ListToDo extends React.Component {
         toast.success("Delete success")
 
         this.setState({
-            listTodo: currentTodos
+            listTodos: currentTodos
             
         })
     }
